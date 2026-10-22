@@ -10,6 +10,7 @@
       <TargetName>Target_1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>6240000::V6.24::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -47,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\</OutputDirectory>
+          <OutputDirectory>.\Objects\</OutputDirectory>
           <OutputName>ESE_Labo4</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\</ListingPath>
+          <ListingPath>.\Listings\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -125,47 +126,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>0</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>BIN\UL2CM3.DLL</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -173,7 +133,7 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
+            <Capability>1</Capability>
             <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -300,17 +260,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -423,9 +383,158 @@
       <Groups>
         <Group>
           <GroupName>Source Group 1</GroupName>
+          <Files>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>rgbleds.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\rgbleds.s</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
+        </Group>
+        <Group>
+          <GroupName>::Device</GroupName>
         </Group>
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis>
+      <api Capiversion="1.0.0" Cclass="Device" Cgroup="STM32Cube Framework" exclusive="1">
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </api>
+    </apis>
+    <components>
+      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="6.1.1" condition="ARMv6_7_8-M Device" ymlID="CMSIS:CORE">
+        <package name="CMSIS" schemaVersion="1.7.40" url="https://www.keil.com/pack/" vendor="ARM" version="6.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Capiversion="1.0.0" Cclass="Device" Cgroup="STM32Cube Framework" Csub="Classic" Cvendor="Keil" Cversion="1.2.7" condition="STM32F7 Framework Classic" ymlID="Device:STM32Cube Framework:Classic">
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common" Cvendor="Keil" Cversion="1.2.7" condition="STM32F7 HAL Common" ymlID="Device:STM32Cube HAL:Common">
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="Cortex" Cvendor="Keil" Cversion="1.2.7" condition="STM32F7 HAL" ymlID="Device:STM32Cube HAL:Cortex">
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO" Cvendor="Keil" Cversion="1.2.7" condition="STM32F7 HAL" ymlID="Device:STM32Cube HAL:GPIO">
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="PWR" Cvendor="Keil" Cversion="1.2.7" condition="STM32F7 HAL" ymlID="Device:STM32Cube HAL:PWR">
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="RCC" Cvendor="Keil" Cversion="1.2.7" condition="STM32F7 HAL GPIO" ymlID="Device:STM32Cube HAL:RCC">
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.2.4" condition="STM32F7 CMSIS" ymlID="Device:Startup">
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+    </components>
+    <files>
+      <file attr="config" category="header" name="CMSIS\Driver\Config\RTE_Device.h" version="1.5.1">
+        <instance index="0">RTE\Device\STM32F746NGHx\RTE_Device.h</instance>
+        <component Capiversion="1.0.0" Cclass="Device" Cgroup="STM32Cube Framework" Csub="Classic" Cvendor="Keil" Cversion="1.2.7" condition="STM32F7 Framework Classic"/>
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" condition="STM32F746_ARMCC" name="Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\arm\startup_stm32f746xx.s" version="1.2.2">
+        <instance index="0">RTE\Device\STM32F746NGHx\startup_stm32f746xx.s</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.2.4" condition="STM32F7 CMSIS"/>
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="header" name="MDK\Templates\Inc\stm32f7xx_hal_conf.h" version="1.2.7">
+        <instance index="0">RTE\Device\STM32F746NGHx\stm32f7xx_hal_conf.h</instance>
+        <component Capiversion="1.0.0" Cclass="Device" Cgroup="STM32Cube Framework" Csub="Classic" Cvendor="Keil" Cversion="1.2.7" condition="STM32F7 Framework Classic"/>
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" name="Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\system_stm32f7xx.c" version="1.2.2">
+        <instance index="0">RTE\Device\STM32F746NGHx\system_stm32f7xx.c</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.2.4" condition="STM32F7 CMSIS"/>
+        <package name="STM32F7xx_DFP" schemaVersion="1.6.0" url="http://www.keil.com/pack/" vendor="Keil" version="2.12.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" name="extension_board\asmcalls.s">
+        <instance index="0" removed="1">RTE\Hesso_pack\asmcalls.s</instance>
+        <component Cclass="Hesso pack" Cgroup="Assembler main call" Cvendor="HessoValais" Cversion="1.0.0"/>
+        <package name="Extension_board" schemaVersion="1.2" url="http://kpacks.hevs.ch/HessoValais.Extension_board.pdsc" vendor="HessoValais" version="1.2.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="source" name="extension_board\clock_216.c" version="1.0.0">
+        <instance index="0" removed="1">RTE\Hesso_pack\clock_216.c</instance>
+        <component Cclass="Hesso pack" Cgroup="Utilities" Csub="Clock" Cvendor="HessoValais" Cversion="1.0.0"/>
+        <package name="Extension_board" schemaVersion="1.2" url="http://kpacks.hevs.ch/HessoValais.Extension_board.pdsc" vendor="HessoValais" version="1.2.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="extension_board\clock_216.h" version="1.0.0">
+        <instance index="0" removed="1">RTE\Hesso_pack\clock_216.h</instance>
+        <component Cclass="Hesso pack" Cgroup="Utilities" Csub="Clock" Cvendor="HessoValais" Cversion="1.0.0"/>
+        <package name="Extension_board" schemaVersion="1.2" url="http://kpacks.hevs.ch/HessoValais.Extension_board.pdsc" vendor="HessoValais" version="1.2.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="source" name="extension_board\ext_26pin.c" version="1.2.0">
+        <instance index="0" removed="1">RTE\Hesso_pack\ext_26pin.c</instance>
+        <component Cclass="Hesso pack" Cgroup="Extension Board" Csub="26_PIN" Cvendor="HessoValais" Cversion="1.2.0" condition="any"/>
+        <package name="Extension_board" schemaVersion="1.2" url="http://kpacks.hevs.ch/HessoValais.Extension_board.pdsc" vendor="HessoValais" version="1.2.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="extension_board\ext_26pin.h" version="1.2.0">
+        <instance index="0" removed="1">RTE\Hesso_pack\ext_26pin.h</instance>
+        <component Cclass="Hesso pack" Cgroup="Extension Board" Csub="26_PIN" Cvendor="HessoValais" Cversion="1.2.0" condition="any"/>
+        <package name="Extension_board" schemaVersion="1.2" url="http://kpacks.hevs.ch/HessoValais.Extension_board.pdsc" vendor="HessoValais" version="1.2.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="source" name="extension_board\main_asm.c">
+        <instance index="0" removed="1">RTE\Hesso_pack\main_asm.c</instance>
+        <component Cclass="Hesso pack" Cgroup="Assembler main call" Cvendor="HessoValais" Cversion="1.0.0"/>
+        <package name="Extension_board" schemaVersion="1.2" url="http://kpacks.hevs.ch/HessoValais.Extension_board.pdsc" vendor="HessoValais" version="1.2.0"/>
+        <targetInfos/>
+      </file>
+    </files>
+  </RTE>
 
 </Project>

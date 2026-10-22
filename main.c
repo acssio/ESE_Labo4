@@ -1,6 +1,7 @@
 #include "stm32f7xx_hal.h"
 
 #include <stdint.h>
+#include "stm32f7xx_hal.h"
 
 static const uint32_t cie1931[101] =
 {
@@ -17,10 +18,40 @@ static const uint32_t cie1931[101] =
 	255,
 };
 
+void ledsInit(int value);
+void nopDelay(int delay);
+
+HAL_StatusTypeDef HAL_InitTick (uint32_t toto) {
+	return HAL_OK;
+}
+
 int main(void)
 {
-	for(;;)
+	 
+	
+	GPIO_InitTypeDef GPIO_InitStruct;
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+	
+	/* Configure GPIO pin: B8, B9 (GPIO_DEBUG) */
+  GPIO_InitStruct.Pin  = GPIO_PIN_9 | GPIO_PIN_8;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL; 
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	
+	
+	
+	//for(;;)
 	{
 		// TODO
+		ledsInit(0x0000);
+		ledsInit(0b11100001000000001111111100000000);
+		ledsInit(0b11100001000000001111111100000000);
+		ledsInit(0b11100001000000000000000011111111);
+		ledsInit(0b11100001000000000000000011111111);
+		ledsInit(0b11100001000000000000000011111111);
+		ledsInit(0x0000);
+		nopDelay(100000);
 	}
 }
