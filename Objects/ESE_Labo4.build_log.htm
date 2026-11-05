@@ -27,9 +27,12 @@ Project File Date:  10/22/2026
 <h2>Output:</h2>
 *** Using Compiler 'V6.24', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target_1'
+"rgbleds.s", line 169: Warning: A1581W: Added 2 bytes of padding at address 0xde
+  169 000000e0  AREA  |.data|, CODE, READWRITE, ALIGN=4
+0 Errors, 1 Warning
 assembling rgbleds.s...
 linking...
-Program Size: Code=1776 RO-data=488 RW-data=0 ZI-data=1632  
+Program Size: Code=1948 RO-data=488 RW-data=8 ZI-data=1640  
 ".\Objects\ESE_Labo4.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -68,18 +71,18 @@ Package Vendor: Keil
 
    * Component: Keil::Device:STM32Cube Framework:Classic@1.2.7
       Source file:   MDK/Templates/Src/main.c
+      Source file:   MDK/Templates_LL/Src/main.c
+      Source file:   MDK/Templates/Src/stm32f7xx_hal_msp.c
+      Include file:  MDK/Templates_LL/Inc/main.h
+      Include file:  MDK/Templates/Inc/stm32f7xx_hal_conf.h
+      Include file:  MDK/Templates/Inc/main.h
+      Include file:  MDK/Templates/Inc/stm32f7xx_it.h
       Include file:  CMSIS/Driver/Config/RTE_Device.h
       Source file:   MDK/Templates/Src/stm32f7xx_it.c
-      Include file:  MDK/Templates/Inc/stm32f7xx_hal_conf.h
-      Include file:  MDK/Templates/Inc/stm32f7xx_it.h
-      Include file:  MDK/Templates_LL/Inc/main.h
-      Source file:   MDK/Templates_LL/Src/main.c
-      Include file:  MDK/Templates/Inc/main.h
-      Source file:   MDK/Templates/Src/stm32f7xx_hal_msp.c
 
    * Component: Keil::Device:STM32Cube HAL:Common@1.2.7
-      Include file:  Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h
       Source file:   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c
+      Include file:  Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h
 
    * Component: Keil::Device:STM32Cube HAL:Cortex@1.2.7
       Source file:   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c
@@ -96,12 +99,12 @@ Package Vendor: Keil
       Source file:   Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c
 
    * Component: Keil::Device:Startup@1.2.4
-      Source file:   MDK/Device/Source/ARM/STM32F74x_75x_OTP.s
-      Source file:   Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/arm/startup_stm32f746xx.s
-      Include file:  Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h
       Source file:   MDK/Device/Source/ARM/STM32F74x_75x_OPT.s
+      Source file:   MDK/Device/Source/ARM/STM32F74x_75x_OTP.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h
+      Source file:   Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/arm/startup_stm32f746xx.s
       Source file:   Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/system_stm32f7xx.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

@@ -11,3 +11,25 @@ void writeDataLed(uint32_t dataToWrite){
     }
 }
 ```
+
+## Task 2
+### Variadic function
+To do this variadic function, we will use more or less this following algorithm
+
+```c
+int nbLed // In r4, tells us how many parameters there is
+int idx   // 
+
+for(idx = 0; idx < 2; idx ++){
+    nbLed--;
+    ledsCommand(r,g,b,lum);
+    if(nbLed == 0) return;
+}
+
+while(nbLed >= 0){
+
+}
+
+return;
+
+```

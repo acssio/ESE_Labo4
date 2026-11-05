@@ -18,15 +18,17 @@ static const uint32_t cie1931[101] =
 	255,
 };
 
-void ledsInit(int value);
+void ledInit();
+void ledRGB(int r, int g, int b, int lum);
 void nopDelay(int delay);
+void LedsRGB(int nbParam, ...);
 
 HAL_StatusTypeDef HAL_InitTick (uint32_t toto) {
 	return HAL_OK;
 }
 
 int main(void)
-{
+	{
 	 
 	
 	GPIO_InitTypeDef GPIO_InitStruct;
@@ -42,16 +44,25 @@ int main(void)
 	
 	
 	
-	//for(;;)
+	for(;;)
 	{
-		// TODO
-		ledsInit(0x0000);
-		ledsInit(0b11100001000000001111111100000000);
-		ledsInit(0b11100001000000001111111100000000);
-		ledsInit(0b11100001000000000000000011111111);
-		ledsInit(0b11100001000000000000000011111111);
-		ledsInit(0b11100001000000000000000011111111);
-		ledsInit(0x0000);
-		nopDelay(100000);
+		static int r = 0;
+		static int g = 255;
+		static int b = 124;
+		
+		ledInit();
+		LedsRGB(6,0xFF220000,0xFF002200,0xFF000022,0xFF222222,0xFF002200,0xFF220022);
+		
+		//for(int i = 0; i<20; i++){
+		//	ledRGB((r)%0x100, (g)%0x100, (b)%0x100, 1);
+		//	nopDelay(100);
+		//}
+		
+		nopDelay(100);
+			
+		r ++;
+		g --;
+		b ++;
+		//ledRGB(255, 255, 0, 1);
 	}
 }
