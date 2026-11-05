@@ -27,13 +27,17 @@ Project File Date:  10/22/2026
 <h2>Output:</h2>
 *** Using Compiler 'V6.24', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target_1'
-"rgbleds.s", line 169: Warning: A1581W: Added 2 bytes of padding at address 0xde
-  169 000000e0  AREA  |.data|, CODE, READWRITE, ALIGN=4
-0 Errors, 1 Warning
-assembling rgbleds.s...
+main.c(38): warning: unused parameter 'toto' [-Wunused-parameter]
+   38 | HAL_StatusTypeDef HAL_InitTick (uint32_t toto) {
+      |                                          ^
+main.c(9): warning: unused variable 'cie1931' [-Wunused-const-variable]
+    9 | static const uint32_t cie1931[101] =
+      |                       ^~~~~~~
+2 warnings generated.
+compiling main.c...
 linking...
-Program Size: Code=1948 RO-data=488 RW-data=8 ZI-data=1640  
-".\Objects\ESE_Labo4.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=2042 RO-data=550 RW-data=0 ZI-data=1640  
+".\Objects\ESE_Labo4.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 

@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include "stm32f7xx_hal.h"
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+
 static const uint32_t cie1931[101] =
 {
 	  0,   0,   1,   1,  1,    1,   2,   2,   2,   3,
@@ -18,6 +21,15 @@ static const uint32_t cie1931[101] =
 	255,
 };
 
+static const uint8_t phase1[20] = 
+	{167,203,231,249,255,249,231,203,167,128,89,53,25,7,1,7,25,53,89,128};
+		
+static const uint8_t phase2[20] = 
+	{213,180,141,102,65,34,12,2,4,18,43,76,115,154,192,222,244,254,252,238};
+		
+static const uint8_t phase3[20] = 
+	{4,2,12,34,65,102,141,180,213,238,252,254,244,222,192,154,115,76,43,18};
+
 void ledInit();
 void ledRGB(int r, int g, int b, int lum);
 void nopDelay(int delay);
@@ -28,7 +40,7 @@ HAL_StatusTypeDef HAL_InitTick (uint32_t toto) {
 }
 
 int main(void)
-	{
+{
 	 
 	
 	GPIO_InitTypeDef GPIO_InitStruct;
@@ -46,23 +58,26 @@ int main(void)
 	
 	for(;;)
 	{
-		static int r = 0;
-		static int g = 255;
-		static int b = 124;
+		static int j = 0;
 		
 		ledInit();
-		LedsRGB(6,0xFF220000,0xFF002200,0xFF000022,0xFF222222,0xFF002200,0xFF220022);
+		//LedsRGB(6,0xFF220000,0xFF002200,0xFF000022,0xFF222222,0xFF002200,0xFF220022);
 		
-		//for(int i = 0; i<20; i++){
-		//	ledRGB((r)%0x100, (g)%0x100, (b)%0x100, 1);
-		//	nopDelay(100);
-		//}
+		int value1;
+		int value2;
+		int value3;
 		
-		nopDelay(100);
+		for(int i = 0; i<20; i++){
+			value1 = phase1[(i+j)%20];
+			value2 = phase2[(i+j)%20];
+			value3 = phase3[(i+j)%20];
 			
-		r ++;
-		g --;
-		b ++;
+			ledRGB(value1,value2,value3, 0x05);
+		}
+		
+		nopDelay(1000000);
+		j++;
+			
 		//ledRGB(255, 255, 0, 1);
 	}
 }
