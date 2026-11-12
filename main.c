@@ -21,13 +21,13 @@ static const uint32_t cie1931[101] =
 	255,
 };
 
-static const uint8_t phase1[20] = 
+static const uint8_t phase1[] = 
 	{167,203,231,249,255,249,231,203,167,128,89,53,25,7,1,7,25,53,89,128};
 		
-static const uint8_t phase2[20] = 
+static const uint8_t phase2[] = 
 	{213,180,141,102,65,34,12,2,4,18,43,76,115,154,192,222,244,254,252,238};
 		
-static const uint8_t phase3[20] = 
+static const uint8_t phase3[] = 
 	{4,2,12,34,65,102,141,180,213,238,252,254,244,222,192,154,115,76,43,18};
 
 void ledInit();
@@ -58,7 +58,7 @@ int main(void)
 	
 	for(;;)
 	{
-		static int j = 0;
+		static int j = 1;
 		
 		ledInit();
 		//LedsRGB(6,0xFF220000,0xFF002200,0xFF000022,0xFF222222,0xFF002200,0xFF220022);
@@ -76,7 +76,7 @@ int main(void)
 		}
 		
 		nopDelay(1000000);
-		j++;
+		j ++;
 			
 		//ledRGB(255, 255, 0, 1);
 	}
